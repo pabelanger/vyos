@@ -1,0 +1,9 @@
+- hosts: appliance
+  gather_facts: false
+  tasks:
+    - name: Setup new user
+      vyos_config:
+        lines:
+          - "set system login user {{ ansible_user }} authentication public-keys {{ ansible_user }}.1 key {{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+          - set service disable-password-authentication
+        save: true
