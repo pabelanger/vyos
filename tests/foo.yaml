@@ -1,0 +1,4 @@
+- hosts: controller
+  tasks:
+    - name: echo inventory
+      shell: cat ~/.inventory.yaml
